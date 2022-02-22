@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.ButtonRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+}
