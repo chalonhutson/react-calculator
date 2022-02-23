@@ -1,14 +1,14 @@
 import React from 'react'
 import '../App.css'
 
-export default function Button({ number, callback }) {
+export default function Button({ operation, callback }) {
   return (
     <div>
         <button className='buttonNumber' onClick={() => {
-          console.log(`Pressed ${number.toString()}`)
-          callback(number)
+          console.log(`Pressed ${operation}`)
+          callback(operation)
           }}>
-            {number.toString()}
+            {operation}
         </button>
     </div>
   )

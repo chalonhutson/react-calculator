@@ -1,29 +1,65 @@
+import { useState } from 'react'
 import './App.css'
-import Button from './components/ButtonNumber';
+import ButtonNumber from './components/ButtonNumber'
+import ButtonOperation from './components/ButtonOperation'
+import ButtonEquals from './components/ButtonEquals'
 
 function App() {
+  const [currentTotal, setCurrentTotal] = useState(0)
+  const [number1, setNumber1] = useState(null)
+  const [number2, setNumber2] = useState(null)
+  const [operation, setOperation] = useState('+')
+
+
+  function adjustTotal () {
+    switch (operation) {
+      case '+':
+        setCurrentTotal(() => currentTotal + number1)
+        setNumber1(currentTotal)
+        break;
+      case '-':
+        setCurrentTotal(() => currentTotal - number1)
+        setNumber1(currentTotal)
+        break;
+    }
+  }
+
+  function numberPress (num) {
+    if (number1 === null) {
+      setNumber1(num)
+    }
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
+      <div className='upperScreen'>
+        <h1 className='total'>{number1 ? number1 : '0'}</h1>
+      </div>
+      <div className='bottomButtons'>
         <div className='buttonRow'>
-          <Button number={1} />
-          <Button number={2} />
-          <Button number={3} />
+          <ButtonNumber number={1} callback={setNumber1} />
+          <ButtonNumber number={2} callback={setNumber1} />
+          <ButtonNumber number={3} callback={setNumber1} />
         </div>
         <div className='buttonRow'>
-          <Button number={4} />
-          <Button number={5} />
-          <Button number={6} />
+          <ButtonNumber number={4} callback={setNumber1} />
+          <ButtonNumber number={5} callback={setNumber1} />
+          <ButtonNumber number={6} callback={setNumber1} />
         </div>
         <div className='buttonRow'>
-          <Button number={7} />
-          <Button number={8} />
-          <Button number={9} />
+          <ButtonNumber number={7} callback={setNumber1} />
+          <ButtonNumber number={8} callback={setNumber1} />
+          <ButtonNumber number={9} callback={setNumber1} />
         </div>
         <div className='buttonRow'>
-          <Button number={0} />
+          <ButtonNumber number={0} callback={setNumber1} />
         </div>
-      </header>
+      <div className='operationButtons'>
+        <ButtonOperation operation={'+'} callback={setOperation} />
+        <ButtonEquals callback={adjustTotal} />
+      </div>
+      </div>
     </div>
   );
 }

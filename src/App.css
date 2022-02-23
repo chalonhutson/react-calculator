@@ -1,5 +1,18 @@
-.App {
+body {
   background-color: #282c34;
+}
+
+.App {
+  margin-top: 50px;
+}
+
+.upperScreen {
+  display: flex;
+  justify-content: center;
+}
+
+.total {
+  color: white;
 }
 
 .button {
@@ -14,12 +27,18 @@
 }
 
 .buttonNumber {
+  margin: 5px;
   width: 50px;
   height: 35px;
   background-color:bisque;
   color: #282c34;
   font-size: large;
-  outline: red 2px solid;
+  outline: 1px solid black;
+}
+
+.operationButtons {
+  display: flex;
+  flex-direction: row;
 }
 
 
