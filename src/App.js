@@ -6,9 +6,10 @@ import ButtonEquals from './components/ButtonEquals'
 
 function App() {
   const [currentTotal, setCurrentTotal] = useState(0)
+  const [displayNumber, setDisplayNumber] = useState(null)
   const [number1, setNumber1] = useState(null)
   const [number2, setNumber2] = useState(null)
-  const [operation, setOperation] = useState('+')
+  const [operation, setOperation] = useState()
 
 
   function adjustTotal () {
@@ -25,8 +26,11 @@ function App() {
   }
 
   function numberPress (num) {
-    if (number1 === null) {
-      setNumber1(num)
+    if (displayNumber === null) {
+      setDisplayNumber(num.toString())
+    } else {
+      let array = [displayNumber, num.toString()]
+      setDisplayNumber(array.join(''))
     }
   }
 
@@ -34,26 +38,26 @@ function App() {
   return (
     <div className="App">
       <div className='upperScreen'>
-        <h1 className='total'>{number1 ? number1 : '0'}</h1>
+        <h1 className='total'>{displayNumber ? displayNumber : '0'}</h1>
       </div>
       <div className='bottomButtons'>
         <div className='buttonRow'>
-          <ButtonNumber number={1} callback={setNumber1} />
-          <ButtonNumber number={2} callback={setNumber1} />
-          <ButtonNumber number={3} callback={setNumber1} />
+          <ButtonNumber number={1} callback={numberPress} />
+          <ButtonNumber number={2} callback={numberPress} />
+          <ButtonNumber number={3} callback={numberPress} />
         </div>
         <div className='buttonRow'>
-          <ButtonNumber number={4} callback={setNumber1} />
-          <ButtonNumber number={5} callback={setNumber1} />
-          <ButtonNumber number={6} callback={setNumber1} />
+          <ButtonNumber number={4} callback={numberPress} />
+          <ButtonNumber number={5} callback={numberPress} />
+          <ButtonNumber number={6} callback={numberPress} />
         </div>
         <div className='buttonRow'>
-          <ButtonNumber number={7} callback={setNumber1} />
-          <ButtonNumber number={8} callback={setNumber1} />
-          <ButtonNumber number={9} callback={setNumber1} />
+          <ButtonNumber number={7} callback={numberPress} />
+          <ButtonNumber number={8} callback={numberPress} />
+          <ButtonNumber number={9} callback={numberPress} />
         </div>
         <div className='buttonRow'>
-          <ButtonNumber number={0} callback={setNumber1} />
+          <ButtonNumber number={0} callback={numberPress} />
         </div>
       <div className='operationButtons'>
         <ButtonOperation operation={'+'} callback={setOperation} />
