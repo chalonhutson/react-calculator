@@ -1,4 +1,5 @@
 # I need help!
+#### I feel really dumb because I can't figure out how to build a basic calculator.
 ## Steps to get started
 ### #1 npm i
 ### #2 npm start
