@@ -2,6 +2,10 @@ body {
   background-color: #282c34;
 }
 
+h4 {
+  color: white
+}
+
 .App {
   margin-top: 50px;
 }
